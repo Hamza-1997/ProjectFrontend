@@ -61,18 +61,18 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
   const history = useHistory(); //intializing
   const classes = useStyles();
-  const [name, setName] = useState("");
 
-  const [open, setOpen] = React.useState(false);
+
+  
   const [email, setEmail] = useState("noumansaeed831@gmail.com");
   const [password, setPassword] = useState("");
-  const [contactnumber, setContactnumber] = useState("");
-  const [profession, setProfession] = useState("");
+ 
 
   const [emailHelper, setemailHelper] = useState("");
   const [passwordHelper, setpasswordHelper] = useState("");
 
   const [loginname, setLoginname] = useState("User");
+
   const onchange = (event) => {
     let valid;
 

@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import Button from "@material-ui/core/Button";
+import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 const Dashboard = (props) => {
   const fetchuser = () => {
     // const headers = {
     //   "x-auth-token": localStorage.getItem(token),
-    // };
+    // };s
+    const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:5000/api/users/me")
+      .get("http://localhost:5000/api/users/me", {
+        headers: { "x-auth-token": token },
+      })
       .then((res) => {
         console.log(res.data);
         console.log(res);
@@ -34,6 +38,10 @@ const Dashboard = (props) => {
       <h4>Email:{props.user.email}</h4>
       <Button onClick={handleclick}>Logout</Button>
       <Button onClick={fetchuser}>Get User info</Button>
+      <Link to="/createmeeting">
+        {" "}
+        <Button>Create Meeting</Button>
+      </Link>
     </div>
   );
 };

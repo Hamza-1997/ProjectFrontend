@@ -55,21 +55,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = () => {
+const ForgetPassword = () => {
   const history = useHistory(); //intializing
   const classes = useStyles();
-  const [name, setName] = useState("");
-
-  const [open, setOpen] = React.useState(false);
+  
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [contactnumber, setContactnumber] = useState("");
-  const [profession, setProfession] = useState("");
-
+  
   const [emailHelper, setemailHelper] = useState("");
-  const [passwordHelper, setpasswordHelper] = useState("");
-
-  const [loginname, setLoginname] = useState("RestPassword");
   const onchange = (event) => {
     let valid;
 
@@ -153,4 +145,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgetPassword;

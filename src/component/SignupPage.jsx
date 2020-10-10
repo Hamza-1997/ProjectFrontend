@@ -1,18 +1,9 @@
-// import React from "react";
-// import { Link } from "react-dom";
-// import { makeStyles, useTheme } from "@material-ui/core/styles";
-// import Grid from "@material-ui/core/Grid";
-// import Typography from "@material-ui/core/Typography";
-// import Button from "@material-ui/core/Button";
-// import TextFiled from "@material-ui/core/TextField";
-//const useStyles = makeStyles((theme) => ({}));
 import React, { useState } from "react";
 import axios from "axios";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
 import PermIdentitySharpIcon from "@material-ui/icons/PermIdentitySharp";
 import Typography from "@material-ui/core/Typography";
@@ -34,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     height: 60,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -102,7 +93,7 @@ const Signup = () => {
       case "password":
         setPassword(event.target.value);
         valid = /.{6,}/.test(event.target.value);
-        // valid = /^{4,6}$/.test(event.target.value);
+        
 
         if (valid) {
           setpasswordHelper("");
