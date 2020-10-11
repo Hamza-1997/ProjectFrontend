@@ -20,7 +20,7 @@ class UserForm extends Component {
     type: "",
 
     participantemails: "",
-    participantsemail: [],
+    participantsemail: [{}],
     emails: "",
     remindertitle: "",
     reminderdate: new Date(),
@@ -102,7 +102,7 @@ class UserForm extends Component {
     e.preventDefault();
     const token = localStorage.getItem("token");
     const { emails } = this.state;
-    const participantemails = { emails };
+     const participantemails = { emails };
     console.log("participantemails", participantemails);
     axios
       .post(
@@ -118,7 +118,7 @@ class UserForm extends Component {
     
 
         this.setState({
-          participantsemail: [...this.state.participantsemail, this.state.emails]
+          participantsemail: [ {emails}]
         })
         swal("Added Sucessfully ", "", "success");
 

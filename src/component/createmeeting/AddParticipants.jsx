@@ -112,11 +112,11 @@ export default function AddParticipants(props) {
       })
       .catch((error) => {
         console.log(error.response.data);
-        // let err = error.response.data;
+         let err = error.response.data;
 
         // setErro(err);
 
-        // swal(err, "", "error");
+         swal(err, "", "error");
       });
   };
 
