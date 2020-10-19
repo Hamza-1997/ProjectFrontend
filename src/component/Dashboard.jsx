@@ -42,6 +42,9 @@ const Dashboard = (props) => {
         {" "}
         <Button>Create Meeting</Button>
       </Link>
+
+      <Link to='/MyMeetings'> <Button> My Meetings</Button></Link>
+      <Link to='/UpcomingMeetings'>    <Button> Upcoming Meetings</Button> </Link>
     </div>
   );
 };

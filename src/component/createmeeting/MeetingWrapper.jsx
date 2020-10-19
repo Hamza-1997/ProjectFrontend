@@ -20,7 +20,7 @@ class UserForm extends Component {
     type: "",
 
     participantemails: "",
-    participantsemail: [{}],
+    participantsemail: [],
     emails: "",
     remindertitle: "",
     reminderdate: new Date(),
@@ -86,6 +86,8 @@ class UserForm extends Component {
 
   handlemeetingtime = (value) => {
     this.setState({ meetingtime: value });
+
+
   };
   handleparticipantemail = (input) => (e) => {
     this.setState({ [input]: e.target.value });
@@ -118,7 +120,9 @@ class UserForm extends Component {
     
 
         this.setState({
-          participantsemail: [ {emails}]
+
+          participantsemail: [...this.state.participantsemail, {emails}] 
+          // participantsemail: [...{emails}]
         })
         swal("Added Sucessfully ", "", "success");
 

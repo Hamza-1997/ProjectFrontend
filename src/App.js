@@ -14,7 +14,8 @@ import ResetPassword from "./component/ResetPassword";
 import JwtDecode from "jwt-decode";
 import Dashboard from "./component/Dashboard";
 import MeetingWrapper from "./component/createmeeting/MeetingWrapper";
-
+import MeetingSchduled from './component/MeetingDetails/SchduledMeetingDetails';
+import UpcomingMeeting from './component/MeetingDetails/UpcomingMeetings';
 function App() {
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -34,6 +35,8 @@ function App() {
             component={() => <Dashboard user={user} />}
           />
           <Route path="/createmeeting" component={MeetingWrapper} />
+          <Route path="/MyMeetings" component={MeetingSchduled} />
+          <Route path="/UpcomingMeetings" component={UpcomingMeeting} />
           <Route path="/ResetPassword/:token" component={ResetPassword} />
           <Route path="/ForgetPassword" component={ForgetPass} />
           <Route path="/Signup" component={Signup} />

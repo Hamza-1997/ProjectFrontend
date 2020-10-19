@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from "@material-ui/core/Button";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -78,21 +80,7 @@ export default function CustomizedTables(props) {
             </StyledTableRow>
 
 
-            <StyledTableRow >
-              <StyledTableCell component="th" scope="row">
-              Creator Name
-              </StyledTableCell>
-              <StyledTableCell >  {props.meeting.name}</StyledTableCell>
-              
-            </StyledTableRow>
-
-            <StyledTableRow >
-              <StyledTableCell component="th" scope="row">
-              Creator Email
-              </StyledTableCell>
-              <StyledTableCell >  {props.meeting.email}</StyledTableCell>
-              
-            </StyledTableRow>
+            
       
             <StyledTableRow >
               <StyledTableCell component="th" scope="row">
@@ -136,20 +124,22 @@ export default function CustomizedTables(props) {
               <StyledTableCell >  {props.meeting.meetingdescription}</StyledTableCell>
               
             </StyledTableRow>
+
+ <StyledTableRow >
+              <StyledTableCell component="th" scope="row">
+              Participants List
+              </StyledTableCell>
+              <StyledTableCell >  {props.meeting.participantsemail.map((input,index) => (
+             
+             <List key={index}><ListItem divider>{input.emails}</ListItem></List>
+             
+             
+           ))}</StyledTableCell>
+              
+            </StyledTableRow>
       
 
-            <TableRow >
- 
-             <TableCell ><Button color='primary' variant='outlined'>Accept</Button></TableCell>
-            <TableCell ><Button color='secondary' variant='outlined'>Reject</Button></TableCell>
-  
-              {/* <StyledTableCell component="th" scope="row">
-            <Button>Accept</Button>
-              </StyledTableCell>
-              <StyledTableCell >  <Button>Reject</Button></StyledTableCell>
-               */}
-            </TableRow>
- 
+            
 
         </TableBody>
 

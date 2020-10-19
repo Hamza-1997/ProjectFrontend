@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from "react";
- import Card from './Cardsa';
+ import Card from './Card';
  import axios from "axios";
  import { useEffect } from "react";
  import { makeStyles } from '@material-ui/core/styles';
@@ -44,12 +44,12 @@ import { useState } from "react";
 
 
 
- const MyMeetings = () => {
+ const UpcomingMeetings = () => {
     const[schmeet,SetSchMeet]=useState([]);
 
     const getData=()=>{
         const token = localStorage.getItem("token");
-        axios.get('http://localhost:5000/api/meeting/ScheduledMeeting',{
+        axios.get('http://localhost:5000/api/meeting/upcomingMeeting',{
             headers: { "x-auth-token": token },
           }).then((res)=>{
             console.log(res.data);
@@ -66,7 +66,7 @@ return ( <div>
 
 <Grid container className={classes.root}>
 <Grid item xs={4}></Grid>
-    <Grid item xs={7}><h1>My Meetings</h1></Grid>
+    <Grid item xs={7}><h1>upcoming meetings</h1></Grid>
     </Grid>
 
   
@@ -83,4 +83,4 @@ return ( <div>
            </div> );
 }
  
-export default MyMeetings;
+export default UpcomingMeetings;
