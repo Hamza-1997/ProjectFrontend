@@ -97,7 +97,7 @@ export default function AddParticipants(props) {
       meetingdate,
       meetingdescription,
     };
-
+    console.log(meetingtime);
     axios
       .post("http://localhost:5000/api/meeting", data, {
         headers: { "x-auth-token": token },
@@ -109,6 +109,8 @@ export default function AddParticipants(props) {
 
         swal("Meeting created Sucessfully ", "", "success");
         history.push("/Dashboard");
+
+
       })
       .catch((error) => {
         console.log(error.response.data);

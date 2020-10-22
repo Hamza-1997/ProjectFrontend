@@ -1,5 +1,9 @@
 import React from 'react';
+
+
+import moment from 'moment-timezone';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -86,7 +90,7 @@ export default function CustomizedTables(props) {
               <StyledTableCell component="th" scope="row">
               Meeting Date
               </StyledTableCell>
-              <StyledTableCell >  {props.meeting.meetingdate}</StyledTableCell>
+              <StyledTableCell >  {moment(`${props.meeting.meetingdate}`).format('Do MMMM YYYY')}</StyledTableCell>
               
             </StyledTableRow>
 
@@ -94,7 +98,7 @@ export default function CustomizedTables(props) {
               <StyledTableCell component="th" scope="row">
               Meeting Time
               </StyledTableCell>
-              <StyledTableCell >  {props.meeting.meetingtime}</StyledTableCell>
+  <StyledTableCell >{moment.utc(`${props.meeting.meetingtime}`).format('h:mm:ss A')}</StyledTableCell>
               
             </StyledTableRow>
       

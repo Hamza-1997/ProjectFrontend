@@ -36,7 +36,7 @@ function App() {
           />
           <Route path="/createmeeting" component={MeetingWrapper} />
           <Route path="/MyMeetings" component={MeetingSchduled} />
-          <Route path="/UpcomingMeetings" component={UpcomingMeeting} />
+          <Route path="/UpcomingMeetings" component={()=><UpcomingMeeting user={user}/>} />
           <Route path="/ResetPassword/:token" component={ResetPassword} />
           <Route path="/ForgetPassword" component={ForgetPass} />
           <Route path="/Signup" component={Signup} />

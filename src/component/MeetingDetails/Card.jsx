@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment-timezone';
+import { useState } from "react";
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,6 +10,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from "@material-ui/core/Button";
+import userEvent from '@testing-library/user-event';
+import { useEffect } from "react";
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -54,9 +58,32 @@ const useStyles = makeStyles({
 
 export default function CustomizedTables(props) {
   const classes = useStyles();
+  const[accept,SetAccept]=useState({});
+ 
+ const handleaccept=(e)=>{
+   e.preventDefault();
+   props.updateData(props.meeting._id);
+   
+ }
 
- 
- 
+ const handlereject=(e)=>{
+  e.preventDefault();
+  props.updateDataa(props.meeting._id);
+  
+}
+
+// const getuserarray=()=>{
+//    props.meeting.participantsemail.map((input) =>console.log(input));
+//   //  console.log('yeh input',input.meetingaccept)
+//     // SetAccept(input.meetingaccept));
+   
+
+// }
+
+// useEffect(getuserarray,[]);
+console.log('meeting',props.meeting);
+console.log('email', props.participantsemail);
+
   return (
     <TableContainer component={Paper} className={classes.container}  >
       <Table className={classes.table} aria-label="customized table">
@@ -98,15 +125,15 @@ export default function CustomizedTables(props) {
               <StyledTableCell component="th" scope="row">
               Meeting Date
               </StyledTableCell>
-              <StyledTableCell >  {props.meeting.meetingdate}</StyledTableCell>
-              
+              <StyledTableCell > {moment(`${props.meeting.meetingdate}`).format('Do MMMM YYYY')}</StyledTableCell>
+      
             </StyledTableRow>
 
             <StyledTableRow >
               <StyledTableCell component="th" scope="row">
               Meeting Time
               </StyledTableCell>
-              <StyledTableCell >  {props.meeting.meetingtime}</StyledTableCell>
+              <StyledTableCell >  {moment.utc(`${props.meeting.meetingtime}`).format('h:mm:ss A')}</StyledTableCell>
               
             </StyledTableRow>
       
@@ -138,19 +165,23 @@ export default function CustomizedTables(props) {
             </StyledTableRow>
       
 
-            <TableRow >
- 
-             <TableCell ><Button color='primary' variant='outlined'>Accept</Button></TableCell>
-            <TableCell ><Button color='secondary' variant='outlined'>Reject</Button></TableCell>
-  
+            
+{ props.participantsemail.meetingaccept === false &&
+            <TableRow > 
+             <TableCell ><Button color='primary' variant='outlined' onClick={handleaccept}>Accept</Button></TableCell>
+             <TableCell ><Button color='secondary' variant='outlined' onClick={handlereject}>Reject</Button></TableCell>
+             </TableRow>
+} 
               {/* <StyledTableCell component="th" scope="row">
             <Button>Accept</Button>
               </StyledTableCell>
               <StyledTableCell >  <Button>Reject</Button></StyledTableCell>
                */}
-            </TableRow>
+            
  
 
+ {/* --------------------------------yeh props.user.email-------------------------- */}
+ 
         </TableBody>
 
       </Table>

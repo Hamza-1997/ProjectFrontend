@@ -44,8 +44,11 @@ import { useState } from "react";
 
 
 
- const UpcomingMeetings = () => {
+ const UpcomingMeetings = (props) => {
     const[schmeet,SetSchMeet]=useState([]);
+        
+
+
 
     const getData=()=>{
         const token = localStorage.getItem("token");
@@ -60,6 +63,32 @@ import { useState } from "react";
 
         })
     }
+
+    const updateData=(id)=>{
+        const token = localStorage.getItem("token");
+    axios.put(`http://localhost:5000/api/meeting/upcomingMeeting/acceptmeeting/${id}`,{ },
+    {headers: { "x-auth-token": token },
+      }).then((res)=>{
+        console.log(res.data);
+        getData();
+    }).catch((err)=>{
+        console.log(err.response.data)
+
+    })}
+
+    const updateDataa=(id)=>{
+        const token = localStorage.getItem("token");
+    axios.put(`http://localhost:5000/api/meeting/upcomingMeeting/rejectmeeting/${id}`,{ },
+    {headers: { "x-auth-token": token },
+      }).then((res)=>{
+        console.log(res.data);
+        getData();
+        
+    }).catch((err)=>{
+        console.log(err.response.data)
+
+    })}
+    
     useEffect(getData,[]);
     const classes = useStyles();
 return ( <div>
@@ -74,9 +103,11 @@ return ( <div>
 <Grid item xs={2}></Grid>
 
 <Grid item xs={10}>
-    {schmeet.map((meeting,index) => (
-             <Card meeting={meeting} key={index} />
-           ))}
+    {schmeet.map((meeting,index) =>  ( meeting.participantsemail.map((arr,index)=>
+    {if (arr.emails === props.user.email && arr.meetingrejectecheck !== true ){
+        
+        return <Card meeting={meeting} 
+    participantsemail={arr} user={props.user} updateData={updateData} updateDataa={updateDataa} key={index} />}}   )))}
            </Grid>
           
            </Grid>
