@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Snackbar from "@material-ui/core/Snackbar";
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import MuiAlert from "@material-ui/lab/Alert";
 import axios from "axios";
 import Avatar from "@material-ui/core/Avatar";
@@ -18,14 +19,27 @@ import { useHistory, Link } from "react-router-dom";
 import SweetAlert from "react-bootstrap-sweetalert";
 import Switch from "./Swicth";
 import swal from "sweetalert";
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import Paper from "@material-ui/core/Paper";
+import IconButton from '@material-ui/core/IconButton';
+import Input from '@material-ui/core/Input';
+import FilledInput from '@material-ui/core/FilledInput';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import clsx from 'clsx';
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(18),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -72,8 +86,27 @@ const Login = () => {
   const [passwordHelper, setpasswordHelper] = useState("");
 
   const [loginname, setLoginname] = useState("User");
+const[pcheck,Pcheck] = useState(true);
+const[pcheckk,Pcheckk] = useState(false);
+const[pcheckval,Pcheckval] = useState('password');
+const [values, setValues] = React.useState({
+  amount: '',
+  password: '',
+  weight: '',
+  weightRange: '',
+  showPassword: false,
+});
 
-  const onchange = (event) => {
+
+const handleClickShowPassword = () => {
+  setValues({ ...values, showPassword: !values.showPassword });
+};
+
+const handleMouseDownPassword = (event) => {
+  event.preventDefault();
+};
+
+const onchange = (event) => {
     let valid;
 
     switch (event.target.id) {
@@ -106,6 +139,30 @@ const Login = () => {
       return;
     }
   };
+
+  const handlepass=()=>{
+    if(pcheck === true)
+    {
+      console.log(pcheck);
+      Pcheckval('g');
+      Pcheck(false);
+      Pcheckk(true);
+    }
+
+    
+  }
+
+  const handlehide=()=>{
+    if(pcheckk === true)
+    {
+      console.log(pcheckk);
+      Pcheckval('password');
+      Pcheckk(false);
+      Pcheck(true);
+    }
+
+    
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -163,7 +220,38 @@ const Login = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+
+
+            {/* <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={values.showPassword ? 'text' : 'password'}
+            value={values.password}
+            error={passwordHelper.length !== 0}
+                helperText={passwordHelper}
+fullWidth
+id="password" 
+onChange={onchange}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+            labelWidth={70}
+          />
+        </FormControl> */}
+
+
+
+               <TextField
                 variant="outlined"
                 required
                 fullWidth
@@ -172,9 +260,16 @@ const Login = () => {
                 name="password"
                 label="Password"
                 id="password"
+                type={pcheckval}
                 autoComplete="off"
                 onChange={onchange}
-              />
+                
+             
+             >
+              
+              </TextField>
+{/* { pcheck &&<VisibilityIcon onClick={handlepass}/>}
+{pcheckk &&<VisibilityOffIcon onClick={handlehide}/>}    */}
             </Grid>
             <Grid item>
               <Switch onSelectLanguage={handlename} />

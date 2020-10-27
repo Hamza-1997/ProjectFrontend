@@ -102,6 +102,7 @@ return ( <div>
     <Grid container className={classes.roott}>
 <Grid item xs={2}></Grid>
 
+
 <Grid item xs={10}>
     {schmeet.map((meeting,index) =>  ( meeting.participantsemail.map((arr,index)=>
     {if (arr.emails === props.user.email && arr.meetingrejectecheck !== true ){
@@ -109,7 +110,7 @@ return ( <div>
         return <Card meeting={meeting} 
     participantsemail={arr} user={props.user} updateData={updateData} updateDataa={updateDataa} key={index} />}}   )))}
            </Grid>
-          
+          s
            </Grid>
            </div> );
 }

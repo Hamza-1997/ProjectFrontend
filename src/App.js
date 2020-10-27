@@ -16,6 +16,7 @@ import Dashboard from "./component/Dashboard";
 import MeetingWrapper from "./component/createmeeting/MeetingWrapper";
 import MeetingSchduled from './component/MeetingDetails/SchduledMeetingDetails';
 import UpcomingMeeting from './component/MeetingDetails/UpcomingMeetings';
+import BetterNavBar from './component/BetterNavbar';
 function App() {
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -29,6 +30,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <BetterNavBar/>
         <Switch>
           <Route
             path="/Dashboard"
