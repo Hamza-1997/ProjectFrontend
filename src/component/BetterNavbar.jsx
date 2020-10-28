@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
-import './Nav.css';
+import "./Nav.css";
 
 export default function BetterNavbar() {
   return (
@@ -13,11 +13,11 @@ export default function BetterNavbar() {
       variant="dark"
     >
       <Navbar.Brand>
-        <h1 className="m-0 p-0 ml-2">
+        <h2 className="m-0 p-0 ml-2">
           <Link to="/" className="navbar-logo" className="text-white">
             #PlanMeet&Log
           </Link>
-        </h1>
+        </h2>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -39,16 +39,14 @@ export default function BetterNavbar() {
           </Nav.Link>
         </Nav>
         <Nav>
-        <Link to='/Signup'>
-          <Button className="mr-sm-2 ml-sm-3" variant="outline-info">
-            Sign Up 
-          </Button>
+          <Link to="/Signup">
+            <Button className="mr-sm-2 ml-sm-3" variant="outline-info">
+              Sign Up
+            </Button>
           </Link>
-          <Link to='/Login'>
-          <Button variant="outline-info">
-              Log In
-              </Button>
-              </Link>
+          <Link to="/Login">
+            <Button variant="outline-info">Log In</Button>
+          </Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
