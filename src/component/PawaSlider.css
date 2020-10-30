@@ -1,0 +1,9 @@
+.awssld__next:focus {
+  border: none;
+  outline: none;
+}
+
+.awssld__prev:focus {
+  border: none;
+  outline: none;
+}
