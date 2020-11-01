@@ -1,69 +1,65 @@
 const handleChange = (event) => {
-    setType(event.target.value);
-    console.log(event.target.value);
-    if (event.target.value === "offline") {
-      setLoc(true);
-    } else {
-      setLoc(false);
-    }
-  };
+  setType(event.target.value);
+  console.log(event.target.value);
+  if (event.target.value === "offline") {
+    setLoc(true);
+  } else {
+    setLoc(false);
+  }
+};
 
-
-  const handleClose = () => {
-    setOpen(false);
+const handleClose = () => {
+  setOpen(false);
+  setCheckBoxDisable(false);
+};
+const handleDone = () => {
+  setOpen(false);
+  setCheckBoxDisable(true);
+};
+const handleCheckboxChange = (event) => {
+  console.log("checkbox", event.target.checked);
+  if (event.target.checked === false) {
     setCheckBoxDisable(false);
-  };
-  const handleDone = () => {
-    setOpen(false);
+  } else if (event.target.checked === true) {
     setCheckBoxDisable(true);
-  };
-  const handleCheckboxChange = (event) => {
-    console.log("checkbox", event.target.checked);
-    if (event.target.checked === false) {
-      setCheckBoxDisable(false);
-    } else if (event.target.checked === true) {
-      setCheckBoxDisable(true);
-    }
-    setCheckBox(event.target.checked);
-    console.log("state of check box", checkbox);
-    if (event.target.checked === true) {
-      setOpen(true);
-    }
-  };
+  }
+  setCheckBox(event.target.checked);
+  console.log("state of check box", checkbox);
+  if (event.target.checked === true) {
+    setOpen(true);
+  }
+};
 
+handleClose = () => {
+  this.setState({ dialogopen: false });
+  this.setState({ checkboxdiable: false });
+  console.log("check box ki props after cancel", this.state.checkboxdiable);
+};
 
-  handleClose = () => {
-    this.setState({ dialogopen: false });
+handleDone = () => {
+  this.setState({ dialogopen: false });
+  this.setState({ checkboxdiable: true });
+};
+handleCheckboxChange = (input) => (e) => {
+  console.log("checkbox", e.target.checked);
+  if (e.target.checked === false) {
     this.setState({ checkboxdiable: false });
-    console.log("check box ki props after cancel", this.state.checkboxdiable);
-  };
-
-  handleDone = () => {
-    this.setState({ dialogopen: false });
+  } else if (e.target.checked === true) {
     this.setState({ checkboxdiable: true });
-  };
-  handleCheckboxChange = (input) => (e) => {
-    console.log("checkbox", e.target.checked);
-    if (e.target.checked === false) {
-      this.setState({ checkboxdiable: false });
-    } else if (e.target.checked === true) {
-      this.setState({ checkboxdiable: true });
-      console.log(
-        "checked box ki value after checking ",
-        this.state.checkboxdiable
-      );
-    }
-    this.setState({ checkbox: e.target.checked });
-    
-    if (e.target.checked === true) {
-      this.setState({ dialogopen: true });
-    
-    }
-  };
+    console.log(
+      "checked box ki value after checking ",
+      this.state.checkboxdiable
+    );
+  }
+  this.setState({ checkbox: e.target.checked });
 
+  if (e.target.checked === true) {
+    this.setState({ dialogopen: true });
+  }
+};
 
-
-{/* 
+{
+  /* 
               <Grid item xs={12}>
                 <FormControlLabel
                   size="medium"
@@ -75,14 +71,15 @@ const handleChange = (event) => {
                   labelPlacement="start"
                   onChange={props.handleCheckboxChange("checkbox")}
                 />
-              </Grid> */}
+              </Grid> */
+}
 
+{
+  /* yeh data of modal*/
+}
 
-
-
-                        {/* yeh data of modal*/}
-
-          {/* <Dialog
+{
+  /* <Dialog
             open={props.values.dialogopen}
             aria-labelledby="form-dialog-title"
           >
@@ -139,4 +136,5 @@ const handleChange = (event) => {
                 Done
               </Button>
             </DialogActions>
-          </Dialog> */}
+          </Dialog> */
+}

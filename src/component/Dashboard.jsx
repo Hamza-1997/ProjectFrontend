@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import { Col, Container, Row } from "react-bootstrap";
+
 const Dashboard = (props) => {
   const fetchuser = () => {
     // const headers = {
@@ -30,22 +32,37 @@ const Dashboard = (props) => {
   };
 
   return (
-    <div>
-      <h1>Welcome to {props.user.Role} dashbaord</h1>
-      <h5>id:{props.user._id} :</h5>
-      <h5>Role:{props.user.Role}</h5>
-      <h4>Name:{props.user.name}</h4>
-      <h4>Email:{props.user.email}</h4>
-      <Button onClick={handleclick}>Logout</Button>
-      <Button onClick={fetchuser}>Get User info</Button>
-      <Link to="/createmeeting">
-        {" "}
-        <Button>Create Meeting</Button>
-      </Link>
+    <Container>
+      <Row>
+        <Col>
+          <h1>Welcome to {props.user.Role} dashboard</h1>
+          <h5>id: {props.user._id}</h5>
+          <h5>Role: {props.user.Role}</h5>
+          <h4>Name: {props.user.name}</h4>
+          <p>Email: {props.user.email}</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button variant="contained" color="secondary" onClick={handleclick}>
+            Logout
+          </Button>
+          <Button variant="contained" onClick={fetchuser}>
+            Get User info
+          </Button>
+          <Link to="/createmeeting">
+            <Button variant="contained">Create Meeting</Button>
+          </Link>
 
-      <Link to='/MyMeetings'> <Button> My Meetings</Button></Link>
-      <Link to='/UpcomingMeetings'>    <Button> Upcoming Meetings</Button> </Link>
-    </div>
+          <Link to="/MyMeetings">
+            <Button variant="contained"> My Meetings</Button>
+          </Link>
+          <Link to="/UpcomingMeetings">
+            <Button variant="contained"> Upcoming Meetings</Button>{" "}
+          </Link>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

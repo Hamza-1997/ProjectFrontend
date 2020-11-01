@@ -86,16 +86,11 @@ class UserForm extends Component {
 
   handlemeetingtime = (value) => {
     this.setState({ meetingtime: value });
-
-
   };
   handleparticipantemail = (input) => (e) => {
     this.setState({ [input]: e.target.value });
   };
-  
 
-
-  
   handleemails = (input) => (e) => {
     this.setState({ [input]: e.target.value });
   };
@@ -104,7 +99,7 @@ class UserForm extends Component {
     e.preventDefault();
     const token = localStorage.getItem("token");
     const { emails } = this.state;
-     const participantemails = { emails };
+    const participantemails = { emails };
     console.log("participantemails", participantemails);
     axios
       .post(
@@ -117,30 +112,24 @@ class UserForm extends Component {
       .then((res) => {
         console.log(res.data);
         console.log(res);
-    
 
         this.setState({
-
-          participantsemail: [...this.state.participantsemail, {emails}] 
+          participantsemail: [...this.state.participantsemail, { emails }],
           // participantsemail: [...{emails}]
-        })
+        });
         swal("Added Sucessfully ", "", "success");
-
-    
       })
       .catch((error) => {
-       console.log(error.response.data);
-         let err = error.response.data;
+        console.log(error.response.data);
+        let err = error.response.data;
 
-         swal(err, "", "error");
+        swal(err, "", "error");
       });
-    
   };
 
   render() {
     const { step } = this.state;
     const {
-      
       participantsemail,
       meetingtitle,
       meetingtype,
@@ -153,11 +142,9 @@ class UserForm extends Component {
       loactionvalue,
       type,
       participantemails,
-      
     } = this.state;
 
     const values = {
-      
       meetingtitle,
       meetingtype,
       participantsemail,
@@ -173,7 +160,6 @@ class UserForm extends Component {
       emails,
     };
     switch (step) {
-      
       case 1:
         return (
           <MeetingDeatils
@@ -198,8 +184,6 @@ class UserForm extends Component {
             handleemails={this.handleemails}
           />
         );
-
-      
     }
   }
 }

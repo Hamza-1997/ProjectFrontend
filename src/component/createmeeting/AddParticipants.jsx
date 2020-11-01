@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddParticipants(props) {
   const history = useHistory();
-  
+
   const handlesubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
@@ -106,19 +106,16 @@ export default function AddParticipants(props) {
         console.log(res.data);
         console.log(res);
 
-
         swal("Meeting created Sucessfully ", "", "success");
         history.push("/Dashboard");
-
-
       })
       .catch((error) => {
         console.log(error.response.data);
-         let err = error.response.data;
+        let err = error.response.data;
 
         // setErro(err);
 
-         swal(err, "", "error");
+        swal(err, "", "error");
       });
   };
 
@@ -126,7 +123,6 @@ export default function AddParticipants(props) {
     e.preventDefault();
     props.previousStep();
   };
-
 
   const classes = useStyles();
 
@@ -167,7 +163,6 @@ export default function AddParticipants(props) {
                   Add
                 </Button>
               </Grid>
-
             </Grid>
 
             <Grid container>
@@ -199,8 +194,6 @@ export default function AddParticipants(props) {
               </Grid>
             </Grid>
           </form>
-
-
         </div>
       </Paper>
     </Container>

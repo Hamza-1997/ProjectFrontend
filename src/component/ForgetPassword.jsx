@@ -58,9 +58,9 @@ const useStyles = makeStyles((theme) => ({
 const ForgetPassword = () => {
   const history = useHistory(); //intializing
   const classes = useStyles();
-  
+
   const [email, setEmail] = useState("");
-  
+
   const [emailHelper, setemailHelper] = useState("");
   const onchange = (event) => {
     let valid;

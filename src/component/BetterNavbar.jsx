@@ -7,7 +7,6 @@ export default function BetterNavbar() {
   return (
     <Navbar
       style={{ background: "#242424" }}
-      fixed="top"
       collapseOnSelect
       expand="lg"
       variant="dark"

@@ -1,37 +1,18 @@
 import React, { useState } from "react";
-import Snackbar from "@material-ui/core/Snackbar";
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import MuiAlert from "@material-ui/lab/Alert";
 import axios from "axios";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-//import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import PermIdentitySharpIcon from "@material-ui/icons/PermIdentitySharp";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory, Link } from "react-router-dom";
-import SweetAlert from "react-bootstrap-sweetalert";
 import Switch from "./Swicth";
 import swal from "sweetalert";
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import Paper from "@material-ui/core/Paper";
-import IconButton from '@material-ui/core/IconButton';
-import Input from '@material-ui/core/Input';
-import FilledInput from '@material-ui/core/FilledInput';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import clsx from 'clsx';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -76,37 +57,33 @@ const Login = () => {
   const history = useHistory(); //intializing
   const classes = useStyles();
 
-
-  
   const [email, setEmail] = useState("noumansaeed831@gmail.com");
   const [password, setPassword] = useState("");
- 
 
   const [emailHelper, setemailHelper] = useState("");
   const [passwordHelper, setpasswordHelper] = useState("");
 
   const [loginname, setLoginname] = useState("User");
-const[pcheck,Pcheck] = useState(true);
-const[pcheckk,Pcheckk] = useState(false);
-const[pcheckval,Pcheckval] = useState('password');
-const [values, setValues] = React.useState({
-  amount: '',
-  password: '',
-  weight: '',
-  weightRange: '',
-  showPassword: false,
-});
+  const [pcheck, Pcheck] = useState(true);
+  const [pcheckk, Pcheckk] = useState(false);
+  const [pcheckval, Pcheckval] = useState("password");
+  const [values, setValues] = React.useState({
+    amount: "",
+    password: "",
+    weight: "",
+    weightRange: "",
+    showPassword: false,
+  });
 
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
 
-const handleClickShowPassword = () => {
-  setValues({ ...values, showPassword: !values.showPassword });
-};
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
-const handleMouseDownPassword = (event) => {
-  event.preventDefault();
-};
-
-const onchange = (event) => {
+  const onchange = (event) => {
     let valid;
 
     switch (event.target.id) {
@@ -140,29 +117,23 @@ const onchange = (event) => {
     }
   };
 
-  const handlepass=()=>{
-    if(pcheck === true)
-    {
+  const handlepass = () => {
+    if (pcheck === true) {
       console.log(pcheck);
-      Pcheckval('g');
+      Pcheckval("g");
       Pcheck(false);
       Pcheckk(true);
     }
+  };
 
-    
-  }
-
-  const handlehide=()=>{
-    if(pcheckk === true)
-    {
+  const handlehide = () => {
+    if (pcheckk === true) {
       console.log(pcheckk);
-      Pcheckval('password');
+      Pcheckval("password");
       Pcheckk(false);
       Pcheck(true);
     }
-
-    
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -220,9 +191,7 @@ const onchange = (event) => {
               />
             </Grid>
             <Grid item xs={12}>
-
-
-            {/* <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+              {/* <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -249,9 +218,7 @@ onChange={onchange}
           />
         </FormControl> */}
 
-
-
-               <TextField
+              <TextField
                 variant="outlined"
                 required
                 fullWidth
@@ -263,12 +230,8 @@ onChange={onchange}
                 type={pcheckval}
                 autoComplete="off"
                 onChange={onchange}
-                
-             
-             >
-              
-              </TextField>
-{/* { pcheck &&<VisibilityIcon onClick={handlepass}/>}
+              ></TextField>
+              {/* { pcheck &&<VisibilityIcon onClick={handlepass}/>}
 {pcheckk &&<VisibilityOffIcon onClick={handlehide}/>}    */}
             </Grid>
             <Grid item>

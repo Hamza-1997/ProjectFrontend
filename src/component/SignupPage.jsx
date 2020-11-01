@@ -93,7 +93,6 @@ const Signup = () => {
       case "password":
         setPassword(event.target.value);
         valid = /.{6,}/.test(event.target.value);
-        
 
         if (valid) {
           setpasswordHelper("");

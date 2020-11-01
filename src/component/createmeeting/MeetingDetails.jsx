@@ -115,19 +115,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MeetingDetails(props) {
-
   const [type, setType] = React.useState("");
   const [location, setLoc] = React.useState(false);
-
-
-  
 
   const continuee = (e) => {
     e.preventDefault();
     props.nextStep();
   };
 
-  
   const classes = useStyles();
 
   return (
@@ -236,9 +231,7 @@ export default function MeetingDetails(props) {
             </Grid>
 
             <Grid container>
-              <Grid item xs={2}>
-                
-              </Grid>
+              <Grid item xs={2}></Grid>
               <Grid item xs={8}>
                 {" "}
               </Grid>
