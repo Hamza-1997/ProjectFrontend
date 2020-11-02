@@ -118,7 +118,6 @@ const UpcomingMeetings = (props) => {
             })
           )}
         </Grid>
-        s
       </Grid>
     </div>
   );

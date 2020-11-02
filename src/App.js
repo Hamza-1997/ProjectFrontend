@@ -13,6 +13,7 @@ import MeetingWrapper from "./component/createmeeting/MeetingWrapper";
 import MeetingSchduled from "./component/MeetingDetails/SchduledMeetingDetails";
 import UpcomingMeeting from "./component/MeetingDetails/UpcomingMeetings";
 import BetterNavBar from "./component/BetterNavbar";
+import AboutUs from "./component/AboutUs/AboutUs";
 function App() {
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
             path="/Dashboard"
             component={() => <Dashboard user={user} />}
           />
+          <Route path="/AboutUs" component={AboutUs} />
           <Route path="/createmeeting" component={MeetingWrapper} />
           <Route path="/MyMeetings" component={MeetingSchduled} />
           <Route

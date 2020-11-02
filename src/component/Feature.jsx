@@ -101,7 +101,7 @@ export default function Features() {
             <h1>FEATURES</h1>
             <h5>
               <p style={{ color: "lightslategray" }}>
-                A feature set allows you to customize PlanMeet&LOg to your
+                A feature set allows you to customize PlanMeet&Log to your
                 unique schedule needs
               </p>
             </h5>

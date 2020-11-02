@@ -5,11 +5,13 @@ import axios from "axios";
 import { Col, Container, Row } from "react-bootstrap";
 
 const Dashboard = (props) => {
+  const token = localStorage.getItem("token");
+  const isUserLoggedIn = token != null;
+
   const fetchuser = () => {
     // const headers = {
     //   "x-auth-token": localStorage.getItem(token),
     // };s
-    const token = localStorage.getItem("token");
     axios
       .get("http://localhost:5000/api/users/me", {
         headers: { "x-auth-token": token },
@@ -31,7 +33,7 @@ const Dashboard = (props) => {
     window.location = "/";
   };
 
-  return (
+  return isUserLoggedIn ? (
     <Container>
       <Row>
         <Col>
@@ -58,7 +60,19 @@ const Dashboard = (props) => {
             <Button variant="contained"> My Meetings</Button>
           </Link>
           <Link to="/UpcomingMeetings">
-            <Button variant="contained"> Upcoming Meetings</Button>{" "}
+            <Button variant="contained"> Upcoming Meetings</Button>
+          </Link>
+        </Col>
+      </Row>
+    </Container>
+  ) : (
+    <Container>
+      <Row className="text-center mt-5">
+        <Col>
+          <h2>You are not logged in.</h2>
+          <p>Please Login first.</p>
+          <Link to="/Login">
+            <Button variant="contained">Login</Button>
           </Link>
         </Col>
       </Row>

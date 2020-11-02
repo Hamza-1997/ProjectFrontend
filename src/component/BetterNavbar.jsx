@@ -4,6 +4,7 @@ import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import "./Nav.css";
 
 export default function BetterNavbar() {
+  const isUserLoggedIn = localStorage.getItem("token") != null;
   return (
     <Navbar
       style={{ background: "#242424" }}
@@ -26,27 +27,31 @@ export default function BetterNavbar() {
               Home
             </Link>
           </Nav.Link>
+          {isUserLoggedIn && (
+            <Nav.Link>
+              <Link to="/Dashboard" className="text-white">
+                Dashboard
+              </Link>
+            </Nav.Link>
+          )}
           <Nav.Link>
-            <Link to="/dashboard" className="text-white">
-              Dashboard
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/products" className="text-white">
-              Products
+            <Link to="/AboutUs" className="text-white">
+              About Us
             </Link>
           </Nav.Link>
         </Nav>
-        <Nav>
-          <Link to="/Signup">
-            <Button className="mr-sm-2 ml-sm-3" variant="outline-info">
-              Sign Up
-            </Button>
-          </Link>
-          <Link to="/Login">
-            <Button variant="outline-info">Log In</Button>
-          </Link>
-        </Nav>
+        {!isUserLoggedIn && (
+          <Nav>
+            <Link to="/Signup">
+              <Button className="mr-sm-2 ml-sm-3" variant="outline-info">
+                Sign Up
+              </Button>
+            </Link>
+            <Link to="/Login">
+              <Button variant="outline-info">Log In</Button>
+            </Link>
+          </Nav>
+        )}
       </Navbar.Collapse>
     </Navbar>
   );

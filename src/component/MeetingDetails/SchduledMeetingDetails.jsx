@@ -4,36 +4,16 @@ import Card from "./Cardsa";
 import axios from "axios";
 import { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
-  //     paper: {
-  //         marginTop: theme.spacing(1),
-  //         display: "flex",
-  //         flexDirection: "column",
-  //         alignItems: "center",
-  //         padding: theme.spacing(2),
-  //         width:500
-  //       },
   root: {
     marginTop: theme.spacing(4),
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+    // display: "flex",
+    // flexDirection: "row",
+    // alignItems: "center",
     padding: theme.spacing(1),
     marginBottom: theme.spacing(4),
-  },
-
-  roott: {
-    display: "flex",
-    //flexDirection: "row",
-    alignItems: "center",
   },
 }));
 
@@ -58,24 +38,24 @@ const MyMeetings = () => {
   useEffect(getData, []);
   const classes = useStyles();
   return (
-    <div>
+    <Container>
       <Grid container className={classes.root}>
-        <Grid item xs={4}></Grid>
-        <Grid item xs={7}>
+        {/* <Grid item xs={4}></Grid> */}
+        <Grid item md={12} className="text-center">
           <h1>My Meetings</h1>
         </Grid>
       </Grid>
 
-      <Grid container className={classes.roott}>
-        <Grid item xs={2}></Grid>
+      <Grid container justify="center" spacing={2}>
+        {/* <Grid item xs={2}></Grid> */}
 
-        <Grid item xs={10}>
-          {schmeet.map((meeting, index) => (
+        {schmeet.map((meeting, index) => (
+          <Grid item md={6}>
             <Card meeting={meeting} key={index} />
-          ))}
-        </Grid>
+          </Grid>
+        ))}
       </Grid>
-    </div>
+    </Container>
   );
 };
 
